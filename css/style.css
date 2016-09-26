@@ -1,0 +1,34 @@
+.slickity .slick-arrow {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  height: 40px;
+  margin: -20px 0 0 0;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  background: #fff;
+  color: #000;
+  transition: all .25s ease-out;
+  -moz-transition: all .25s ease-out;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  -ms-transition: all .25s ease-out;
+  border-radius: 0;
+}
+
+.slickity .slick-arrow:hover {
+  background: #000;
+  color: #fff;
+}
+
+.slickity .slick-next {
+  right: 0;
+}
+
+.slickity .slick-prev {
+  left: 0;
+}
