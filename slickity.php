@@ -36,6 +36,7 @@ if ( function_exists( 'get_field' ) )
   {
     wp_register_script( 'slickity-slick',  plugin_dir_url( SLICKITY ) . 'js/slick.min.js', array( 'jquery' ), '1.6.0', true );
     wp_register_style( 'slickity-slick',  plugin_dir_url( SLICKITY ) . 'css/slick.css' );
+    wp_register_style( 'slickity-icons',  plugin_dir_url( SLICKITY ) . 'css/fontello.css' );
     wp_register_style( 'slickity-style',  plugin_dir_url( SLICKITY ) . 'css/style.css' );
   }
 

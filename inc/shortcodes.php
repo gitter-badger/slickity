@@ -87,6 +87,9 @@ function slickity_slideshow_shortcode( $atts )
                     }
                     else
                     {
+                      // Icons
+                      wp_enqueue_style( 'slickity-icons' );
+
                       // Predefined style
                       $class = ' slickity__slide--' . $ary['slickity_style'];
                       wp_enqueue_style( 'slickity-' . $ary['slickity_style'], plugin_dir_url( SLICKITY ) . 'css/' . $ary['slickity_style'] . '.css' );
@@ -95,17 +98,53 @@ function slickity_slideshow_shortcode( $atts )
 
                   // If has slide content & image, use image as background.
                   if ( $ary['slickity_slide_content'] && $ary['slickity_slide_image'] ) {
-                    $style = ' style="background-image: url(\'' . $ary['slickity_slide_image']['url'] . '\');"';
+                    $css = '#slickity-slide-' . $key. ' {
+                      background-image: url(\'' . $ary['slickity_slide_image']['url'] . '\');
+                    }';
+                    wp_add_inline_style( 'slickity-style', $css );
+
+                    if ( $ary['slickity_enable_mobile_image'] && $ary['slickity_mobile_slide_image'] )
+                    {
+                      $mobile_css = '@media (max-width: ' . $ary['slickity_mobile_breakpoint'] . ') {
+                        #slickity-slide-' . $key. ' {
+                          background-image: url(\'' . $ary['slickity_mobile_slide_image']['url'] . '\');
+                        }
+                      }';
+                      wp_add_inline_style( 'slickity-style', $mobile_css );
+                    }
                   }
                   ?>
-                  <div class="slickity__slide<?php echo $class; ?>" id="slickity-slide-<?php echo $key; ?>"<?php echo $style; ?>>
+                  <div class="slickity__slide<?php echo $class; ?>" id="slickity-slide-<?php echo $key; ?>">
                     <?php
                     // If has no content, but an image, use as an image slide.
                     if ( ! $ary['slickity_slide_content'] && $ary['slickity_slide_image'] )
                     {
+                      if ( $ary['slickity_link_slide_image'] && $ary['slickity_slide_link'] )
+                      {
+                        $target = '';
+                        if ( $ary['slickity_slide_window'] )
+                        {
+                          $target = ' target="_blank"';
+                        }
+                        ?>
+                        <a href="<?php echo esc_url( $ary['slickity_slide_link'] ); ?>"<?php echo $target; ?>>
+                        <?php
+                      }
                       ?>
-                        <img src="<?php echo esc_url( $ary['slickity_slide_image']['url'] ); ?>" alt="<?php echo esc_attr( $ary['slickity_slide_image']['title'] ); ?>" width="<?php echo esc_attr( $ary['slickity_slide_image']['width'] ); ?>" height="<?php echo esc_attr( $ary['slickity_slide_image']['height'] ); ?>">
-                      <?
+                        <img src="<?php echo esc_url( $ary['slickity_slide_image']['url'] ); ?>" alt="<?php echo esc_attr( $ary['slickity_slide_image']['title'] ); ?>" width="<?php echo esc_attr( $ary['slickity_slide_image']['width'] ); ?>" height="<?php echo esc_attr( $ary['slickity_slide_image']['height'] ); ?>" class="slickity__image">
+                        <?php
+                        if ( $ary['slickity_enable_mobile_image'] && $ary['slickity_mobile_slide_image'] )
+                        {
+                          ?>
+                          <img src="<?php echo esc_url( $ary['slickity_mobile_slide_image']['url'] ); ?>" alt="<?php echo esc_attr( $ary['slickity_mobile_slide_image']['title'] ); ?>" width="<?php echo esc_attr( $ary['slickity_mobile_slide_image']['width'] ); ?>" height="<?php echo esc_attr( $ary['slickity_mobile_slide_image']['height'] ); ?>" class="slickity__mobile-image">
+                          <?php
+                        }
+                      if ( $ary['slickity_link_slide_image'] && $ary['slickity_slide_link'] )
+                      {
+                        ?>
+                        </a>
+                        <?php
+                      }
                     }
                     // If has slide content.
                     elseif ( $ary['slickity_slide_content'] )

@@ -12,11 +12,14 @@ Slickity is the last carousel you'll ever need. Easily add carousels and sliders
 
 Slickity is **the last carousel you'll ever need**. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library.
 
+Requires [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/).
+
 Major features in Slickity include:
 
 * Create multiple slideshows
 * Configure settings per slideshow
 * Pre-defined themes included
+* Set individual slide schedules, automation
 * Fully responsive, scales with its container
 * Separate settings per breakpoint
 * Uses CSS3 when available, fully functional when not
