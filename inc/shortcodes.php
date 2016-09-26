@@ -47,11 +47,8 @@ function slickity_slideshow_shortcode( $atts )
                 // Check if schedule enabled
                 if ( $ary['slickity_enable_schedule'] )
                 {
-                  $display = false;
-
+                  // Yearly
                   $today = new DateTime();
-
-                  // Date range
                   if ( $ary['slickity_show_slide_yearly'] )
                   {
                     // Yearly
@@ -66,10 +63,20 @@ function slickity_slideshow_shortcode( $atts )
                   }
 
                   if (
-                    $today->getTimestamp() > $start->getTimestamp() &&
-                    $today->getTimestamp() < $stop->getTimestamp()
+                    $today->getTimestamp() < $start->getTimestamp() ||
+                    $today->getTimestamp() > $stop->getTimestamp()
                   ) {
-                    $display = true;
+                    $display = false;
+                  }
+
+                  // By Day
+                  if ( $ary['slickity_show_slide_by_day'] )
+                  {
+                    $today = strtolower( date( 'l' ) );
+                    if ( !in_array( $today, $ary['slickity_show_slide_by_day'] ) )
+                    {
+                      $display = false;
+                    }
                   }
                 }
 
