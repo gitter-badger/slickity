@@ -6,7 +6,7 @@
 /*
 Plugin Name: Slickity
 Plugin URI:
-Description: Slickity is <strong>the last carousel you'll ever need</strong>. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library. <strong>Requires the <a href="https://www.advancedcustomfields.com/pro/" target="_blank">Advanced Custom Fields PRO</a> plugin.</strong>
+Description: Slickity is <strong>the last WordPress carousel plugin you'll ever need!</strong> Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features including lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library.
 Author: Ben Marshall
 Version: 1.0.0
 Author URI: https://benmarshall.me

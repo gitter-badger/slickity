@@ -6,16 +6,15 @@ Tested up to: 4.6.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 
-Slickity is the last carousel you'll ever need. Easily add carousels and sliders to your theme using a simple shortcode.
+Slickity is the last WordPress carousel plugin you'll ever need. Easily add carousels & sliders to your theme using slick.js.
 
 == Description ==
 
-Slickity is **the last carousel you'll ever need**. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library.  **Requires the [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) plugin.**
-
-Requires [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/).
+Slickity is **the last WordPress carousel plugin you'll ever need**. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more.
 
 Major features in Slickity include:
 
+* Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library
 * Create multiple slideshows
 * Configure settings per slideshow
 * Pre-defined themes included
