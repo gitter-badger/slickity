@@ -37,6 +37,13 @@ You're done!
 
 == Changelog ==
 
+= 1.0.1 =
+*Release Date - 29 September 2016*
+
+* Minor updates
+
+* Initial commit.
+
 = 1.0.0 =
 *Release Date - 26 September 2016*
 
