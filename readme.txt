@@ -10,7 +10,7 @@ Slickity is the last carousel you'll ever need. Easily add carousels and sliders
 
 == Description ==
 
-Slickity is **the last carousel you'll ever need**. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library.
+Slickity is **the last carousel you'll ever need**. Easily add carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features like lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library.  **Requires the [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) plugin.**
 
 Requires [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/).
 
