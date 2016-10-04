@@ -3,7 +3,7 @@ Contributors: bmarshall511
 Tags: slick, slider, carousel
 Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Slickity is the last WordPress carousel plugin you'll ever need. Easily add carousels & sliders to your theme using slick.js.
@@ -37,12 +37,14 @@ You're done!
 
 == Changelog ==
 
+= 1.0.2 =
+
+* Added additional slide style
+
 = 1.0.1 =
 *Release Date - 29 September 2016*
 
 * Minor updates
-
-* Initial commit.
 
 = 1.0.0 =
 *Release Date - 26 September 2016*

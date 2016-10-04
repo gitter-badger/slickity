@@ -77,7 +77,8 @@ acf_add_local_field_group(array (
             'id' => '',
           ),
           'choices' => array (
-            'style-1' => 'Style 1 &mdash; 500px tall, content verticaly centered, aligned to right at 50% maximum width',
+            'style-1' => 'Style 1 &mdash; 500px tall, vertically centered, aligned to right at 50% maximum width',
+            'style-2' => 'Style 2 &mdash; 500px tall, vertically centered, aligned to left at 50% maximum width',
             'custom-css' => 'Custom CSS',
           ),
           'default_value' => array (
@@ -743,7 +744,7 @@ acf_add_local_field_group(array (
         'class' => '',
         'id' => '',
       ),
-      'default_value' => '<button type="button" class="slick-prev"><i class="slickity-icon-left-open-big"></i></button>',
+      'default_value' => '<button type="button" class="slick-prev"><i class="slickity-icon-left-open"></i></button>',
       'placeholder' => '',
       'prepend' => '',
       'append' => '',
@@ -762,7 +763,7 @@ acf_add_local_field_group(array (
         'class' => '',
         'id' => '',
       ),
-      'default_value' => '<button type="button" class="slick-next"><i class="slickity-icon-right-open-big"></i></button>',
+      'default_value' => '<button type="button" class="slick-next"><i class="slickity-icon-right-open"></i></button>',
       'placeholder' => '',
       'prepend' => '',
       'append' => '',

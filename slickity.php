@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Slickity
- * @version 1.0.0
+ * @version 1.0.2
  */
 /*
 Plugin Name: Slickity
 Plugin URI:
 Description: Slickity is <strong>the last WordPress carousel plugin you'll ever need!</strong> Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features including lazy loading, navigation, theming and more. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library.
 Author: Ben Marshall
-Version: 1.0.0
+Version: 1.0.2
 Author URI: https://benmarshall.me
 */
 
