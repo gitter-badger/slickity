@@ -3,7 +3,7 @@ Contributors: bmarshall511
 Tags: slick, slider, carousel
 Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 
 Slickity is the last WordPress carousel plugin you'll ever need. Easily add carousels & sliders to your theme using slick.js.
@@ -29,6 +29,8 @@ Major features in Slickity include:
 * Add, remove, filter &amp; unfilter slides
 * Autoplay, dots, arrows, etc&hellip;
 
+Use <code>[slickity-slideshow id="1"]</code> to display slideshows in posts, pages and widgets; <code>id</code> being the ID of the slideshow.
+
 == Installation ==
 
 Upload the Slickity plugin to your blog, Activate it.
@@ -36,6 +38,10 @@ Upload the Slickity plugin to your blog, Activate it.
 You're done!
 
 == Changelog ==
+
+= 1.0.3 =
+
+* Update documentation
 
 = 1.0.2 =
 
