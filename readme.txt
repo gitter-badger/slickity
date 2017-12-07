@@ -23,6 +23,7 @@ Major features in Slickity include:
 * Infinite looping
 * Fully accessible with arrow key navigation
 * Autoplay, dots, arrows, callbacks, etc...
+* Prebuilt templates &mdash; or use your own
 
 Use <code>[slickity id="1"]</code> to display slideshows in posts, pages and widgets; <code>id</code> being the ID of the slideshow.
 
