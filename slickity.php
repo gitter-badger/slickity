@@ -4,7 +4,7 @@
 Plugin Name: Slickity
 Plugin URI: https://wordpress.org/plugins/slickity/
 Description: Slickity is <strong>the last WordPress carousel plugin you'll ever need!</strong> Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library.
-Version: 2.0.0
+Version: 2.0.1
 Author: Ben Marshall
 Author URI: https://benmarshall.me
 License: GPLv2 or later
@@ -101,6 +101,16 @@ if ( !function_exists( 'slickity_deactivation' ) ) {
   //flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'slickity_deactivation' );
+
+/**
+ * Load plugin textdomain.
+ *
+ * @since 2.0.0
+ */
+function slickity_load_textdomain() {
+  load_plugin_textdomain( 'slickity', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'slickity_load_textdomain' );
 
 /**
  * Include the TGM_Plugin_Activation class.
