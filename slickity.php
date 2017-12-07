@@ -4,7 +4,7 @@
 Plugin Name: Slickity
 Plugin URI: https://wordpress.org/plugins/slickity/
 Description: Slickity is <strong>the last WordPress carousel plugin you'll ever need!</strong> Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library.
-Version: 2.0.1
+Version: 2.1.0
 Author: Ben Marshall
 Author URI: https://benmarshall.me
 License: GPLv2 or later
@@ -185,14 +185,117 @@ if ( !function_exists( 'slickity_scripts' ) ) {
     // Register Slick CSS
     wp_register_style( 'slickity-slick', plugin_dir_url( __FILE__ ) . 'public/css/slick.css', array(), '1.8.0' );
     wp_register_style( 'slickity-theme', plugin_dir_url( __FILE__ ) . 'public/css/slick-theme.css', array( 'slickity-slick' ), '1.8.0' );
+    wp_register_style( 'slickity-templates', plugin_dir_url( __FILE__ ) . 'public/css/slick-templates.css', array( 'slickity-theme' ) );
 
     // @TODO - Find a better way to load scripts only if a slideshow is present on the page.
     wp_enqueue_script( 'slickity-slick' );
-    wp_enqueue_style( 'slickity-slick' );
-    wp_enqueue_style( 'slickity-theme' );
+    wp_enqueue_style( 'slickity-templates' );
   }
 }
 add_action( 'wp_enqueue_scripts', 'slickity_scripts' );
+
+/**
+ * Convert a hexa decimal color code to its RGB equivalent
+ *
+ * @param string $hexStr (hexadecimal color value)
+ * @param boolean $returnAsString (if set true, returns the value separated by the separator character. Otherwise returns associative array)
+ * @param string $seperator (to separate RGB values. Applicable only if second parameter is true.)
+ * @return array or string (depending on second parameter. Returns False if invalid hex color value)
+ */
+function slickity_hex2RGB( $hexStr, $returnAsString = false, $seperator = ',' ) {
+  $hexStr = preg_replace( "/[^0-9A-Fa-f]/", '', $hexStr ); // Gets a proper hex string
+  $rgbArray = array();
+  if ( strlen( $hexStr ) == 6 ) { //If a proper hex code, convert using bitwise operation. No overhead... faster
+    $colorVal = hexdec($hexStr);
+    $rgbArray['red'] = 0xFF & ( $colorVal >> 0x10 );
+    $rgbArray['green'] = 0xFF & ( $colorVal >> 0x8 );
+    $rgbArray['blue'] = 0xFF & $colorVal;
+  } elseif ( strlen( $hexStr ) == 3 ) { //if shorthand notation, need some string manipulations
+    $rgbArray['red'] = hexdec( str_repeat( substr( $hexStr, 0, 1 ), 2) );
+    $rgbArray['green'] = hexdec( str_repeat( substr( $hexStr, 1, 1 ), 2) );
+    $rgbArray['blue'] = hexdec( str_repeat( substr( $hexStr, 2, 1 ), 2) );
+  } else {
+    return false; //Invalid hex color code
+  }
+  return $returnAsString ? implode( $seperator, $rgbArray ) : $rgbArray; // returns the rgb string or the associative array
+}
+
+if ( !function_exists( 'slickity_slide_content' ) ) {
+  function slickity_slide_content( $slide, $id, $thumbnail = false ) {
+    // Check if using a template
+    if ( $slide['template'] ) {
+      // Get which template is selected
+      $templates = $slide['templates'];
+      $template = $templates['template'];
+      $template_options = $templates[ $template ];
+
+      switch( $template ) {
+        case 'default':
+          // Default template
+          if ( ! $thumbnail ) {
+            // Main slide
+            $html = '<div class="slickity-slide slickity-slide-template slickity-slide-template--' . $template . ' ' . $slide['css'] . '" id="slickity-slide-' . $id . '">';
+
+            if ( $template_options['bg_opacity'] === 100 ) {
+              $template_options['bg_opacity'] = 1;
+            } else {
+              $template_options['bg_opacity'] = '.' . $template_options['bg_opacity'];
+            }
+
+            $rgb = slickity_hex2RGB( $template_options['bg_color'] );
+            $rgba = $rgb['red'] . ',' . $rgb['green'] . ',' . $rgb['blue'] . ',' . $template_options['bg_opacity'];
+
+            $html .= '<div class="slickity-slide-template__image">';
+            $html .= wp_get_attachment_image( $template_options['image']['ID'], $template_options['image_size'] );
+            $html .= '</div>';
+            $html .= '<div class="slickity-slide-template__caption" style="background-color: rgba(' . $rgba . '); color: ' . $template_options['text_color'] . '">';
+            $html .= apply_filters( 'the_content', $template_options['caption'] );
+            $html .= '</div>';
+
+            $html .= '</div>';
+          } else {
+            // Thumbnail slide
+            if ( $slide['thumbnail'] ) {
+              // Custom thumbnail, template
+              $html = '<div class="slickity-slide slickity-slide--thumbnail slickity-slide-thumbnail-template slickity-slide-thumbnail-template--' . $template . ' ' . $slide['thumbnail_css'] . '" id="slickity-thumbnail-slide-' . $id . '">';
+              $html .= apply_filters( 'the_content', $slide['thumbnail_content'] );
+            } else {
+              // No custom thumbnail, template
+              $html = '<div class="slickity-slide slickity-slide--thumbnail slickity-slide-thumbnail-template slickity-slide-thumbnail-template--' . $template . ' ' . $slide['css'] . '" id="slickity-thumbnail-slide-' . $id . '">';
+              $html .= wp_get_attachment_image( $template_options['image']['ID'], $template_options['image_size'] );
+            }
+            $html .= '</div>';
+          }
+          break;
+      }
+    } else {
+      // No template
+      if ( ! $thumbnail ) {
+        // Main slide
+
+        // No custom thumbnail, no template
+        $html = '<div class="slickity-slide slickity-slide--thumbnail ' . $slide['css'] . '" id="slickity-slide-' . $id . '">$';
+        $html .= apply_filters( 'the_content', $slide['slide_content'] ) . 'HERE';
+        $html .= '</div>';
+      } else {
+        // Thumbnail slide
+        if ( $slide['thumbnail'] ) {
+          // Custom thumbnail
+          $html = '<div class="slickity-slide slickity-slide--thumbnail ' . $slide['thumbnail_css'] . '" id="slickity-slide-' . $id . '">';
+          $html .= apply_filters( 'the_content', $slide['thumbnail_content'] );
+          $html .= '</div>';
+        } else {
+          // No custom thumbnail
+          $html = '<div class="slickity-slide slickity-slide--thumbnail ' . $slide['css'] . '" id="slickity-slide-' . $id . '">';
+          $html .= apply_filters( 'the_content', $slide['slide_content'] );
+          $html .= '</div>';
+        }
+      }
+    }
+
+    return $html;
+  }
+}
 
 if ( !function_exists( 'slickity_shortcode_init' ) ) {
   function slickity_shortcode_init() {
@@ -220,35 +323,39 @@ if ( !function_exists( 'slickity_shortcode_init' ) ) {
               // Get slideshow settings
               $settings = get_field( 'slickity_main_settings' );
 
+              // Check if template was selected
+              $template_css = '';
+              if ( $settings['template'] ) {
+                $template_css = 'slickity-template slickity-template--' . $settings['template'];
+              }
+
               // Get thumbnail settings
               $thumbnail_settings = false;
               if ( get_field( 'slickity_thumbnail' ) ) {
                 $thumbnail_settings = get_field( 'slickity_thumbnail_settings' );
+
+                // Check if thumbnail template was selected
+                $thumbnail_template_css = '';
+                if ( $thumbnail_settings['template'] ) {
+                  $thumbnail_template_css = 'slickity-thumbnail-template slickity-thumbnail-template--' . $thumbnail_settings['template'];
+                }
               }
               ?>
-              <div class="slickity <?php echo $settings['css']; ?>" id="slickity-<?php the_ID(); ?>">
-                <?php foreach( $slides as $key => $slide ): ?>
-                  <div class="slickity-slide <?php echo $slide['css']; ?>" id="slickity-slide-<?php echo $key; ?>">
-                    <?php echo $slide['slide_content']; ?>
-                  </div>
-                <?php endforeach; ?>
+              <div class="slickity <?php echo $template_css; ?> <?php echo $settings['css']; ?>" id="slickity-<?php the_ID(); ?>">
+                <?php
+                foreach( $slides as $key => $slide ):
+                  echo slickity_slide_content( $slide, $key );
+                endforeach;
+                ?>
               </div>
 
               <?php if ( $thumbnail_settings ): ?>
-                <div class="slickity slickity--thumbnail <?php echo $thumbnail_settings['css']; ?>" id="slickity-thumbnail-<?php the_ID(); ?>">
-                  <?php foreach( $slides as $key => $slide ): ?>
-
-                    <?php if ( $slide['thumbnail_content'] ): ?>
-                      <div class="slickity-slide <?php echo $slide['thumbnail_css']; ?>" id="slickity-thumbnail-slide-<?php echo $key; ?>">
-                        <?php echo apply_filters( 'the_content', $slide['thumbnail_content'] ); ?>
-                      </div>
-                    <?php else: ?>
-                      <div class="slickity-slide <?php echo $slide['css']; ?>" id="slickity-thumbnail-slide-<?php echo $key; ?>">
-                        <?php echo apply_filters( 'the_content', $slide['slide_content'] ); ?>
-                      </div>
-                    <?php endif; ?>
-
-                  <?php endforeach; ?>
+                <div class="slickity slickity--thumbnail <?php echo $thumbnail_template_css; ?> <?php echo $thumbnail_settings['css']; ?>" id="slickity-thumbnail-<?php the_ID(); ?>">
+                  <?php
+                  foreach( $slides as $key => $slide ):
+                    echo slickity_slide_content( $slide, $key, true );
+                  endforeach;
+                  ?>
                 </div>
               <?php endif; ?>
               <script>

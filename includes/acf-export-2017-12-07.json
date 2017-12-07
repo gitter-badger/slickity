@@ -55,15 +55,34 @@
                         "endpoint": 0
                     },
                     {
-                        "key": "field_5a27035736406",
-                        "label": "Thumbnail",
-                        "name": "thumbnail",
+                        "key": "field_5a2973e351dc5",
+                        "label": "Use Template",
+                        "name": "template",
                         "type": "true_false",
-                        "instructions": "Enable alternative slideshow content for the thumbnail slider when the  'Thumbnail Slideshow' is enabled.",
+                        "instructions": "Enable to use a predefined slide template.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
-                            "width": "",
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 1,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a27035736406",
+                        "label": "Custom Thumbnail",
+                        "name": "thumbnail",
+                        "type": "true_false",
+                        "instructions": "Override the default thumbnail slide content when  'Thumbnail Slideshow' is enabled.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
                             "class": "",
                             "id": ""
                         },
@@ -74,13 +93,218 @@
                         "ui_off_text": "False"
                     },
                     {
+                        "key": "field_5a2988670daae",
+                        "label": "Available Templates",
+                        "name": "templates",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2973e351dc5",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5a29878365ad6",
+                                "label": "Template",
+                                "name": "template",
+                                "type": "select",
+                                "instructions": "Select the template for this slide below.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "default": "Default Template (image & caption)"
+                                },
+                                "default_value": [
+                                    "default"
+                                ],
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 1,
+                                "ajax": 0,
+                                "return_format": "value",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5a29890a140f0",
+                                "label": "Default Template (image & caption)",
+                                "name": "default",
+                                "type": "group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_5a29878365ad6",
+                                            "operator": "==",
+                                            "value": "default"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "layout": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_5a29894eb185e",
+                                        "label": "Image",
+                                        "name": "image",
+                                        "type": "image",
+                                        "instructions": "Click 'Add Image' to upload the slide image.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "50",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "return_format": "array",
+                                        "preview_size": "thumbnail",
+                                        "library": "all",
+                                        "min_width": "",
+                                        "min_height": "",
+                                        "min_size": "",
+                                        "max_width": "",
+                                        "max_height": "",
+                                        "max_size": "",
+                                        "mime_types": ""
+                                    },
+                                    {
+                                        "key": "field_5a29911a717ab",
+                                        "label": "Image Size",
+                                        "name": "image_size",
+                                        "type": "radio",
+                                        "instructions": "Optional image size. Enter a custom one if needed.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "50",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "choices": {
+                                            "thumbnail": "Thumbnail",
+                                            "medium": "Medium",
+                                            "medium_large": "Medium - Large",
+                                            "large": "Large",
+                                            "full": "Full"
+                                        },
+                                        "allow_null": 0,
+                                        "other_choice": 1,
+                                        "save_other_choice": 1,
+                                        "default_value": "full",
+                                        "layout": "vertical",
+                                        "return_format": "value"
+                                    },
+                                    {
+                                        "key": "field_5a298968b185f",
+                                        "label": "Caption",
+                                        "name": "caption",
+                                        "type": "wysiwyg",
+                                        "instructions": "Optional image caption text.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "tabs": "all",
+                                        "toolbar": "basic",
+                                        "media_upload": 0,
+                                        "delay": 0
+                                    },
+                                    {
+                                        "key": "field_5a299de9e472c",
+                                        "label": "Text Color",
+                                        "name": "text_color",
+                                        "type": "color_picker",
+                                        "instructions": "Select the caption text color.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "33.333333333333333",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "#ffffff"
+                                    },
+                                    {
+                                        "key": "field_5a299ccca15b7",
+                                        "label": "Background Color",
+                                        "name": "bg_color",
+                                        "type": "color_picker",
+                                        "instructions": "Select the background color for the caption text.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "33.333333333333333",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "#000000"
+                                    },
+                                    {
+                                        "key": "field_5a299d49a15b8",
+                                        "label": "Background Opacity",
+                                        "name": "bg_opacity",
+                                        "type": "number",
+                                        "instructions": "Enter the opacity for the background color.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "33.333333333333333",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": 85,
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "%",
+                                        "min": 0,
+                                        "max": 100,
+                                        "step": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "key": "field_5a259a429f20b",
                         "label": "Content",
                         "name": "slide_content",
                         "type": "wysiwyg",
                         "instructions": "Create the slide content below.",
                         "required": 0,
-                        "conditional_logic": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2973e351dc5",
+                                    "operator": "!=",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
                         "wrapper": {
                             "width": "",
                             "class": "",
@@ -175,7 +399,7 @@
                     },
                     {
                         "key": "field_5a2599db84351",
-                        "label": "Options",
+                        "label": "Schedule",
                         "name": "",
                         "type": "tab",
                         "instructions": "",
@@ -188,6 +412,23 @@
                         },
                         "placement": "top",
                         "endpoint": 0
+                    },
+                    {
+                        "key": "field_5a298c0511b46",
+                        "label": "Coming Soon",
+                        "name": "",
+                        "type": "message",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "Slide schedules coming soon!",
+                        "new_lines": "wpautop",
+                        "esc_html": 0
                     }
                 ]
             },
@@ -209,7 +450,7 @@
             },
             {
                 "key": "field_5a26ac33fd41e",
-                "label": "Thumbnail Slideshow",
+                "label": "Enable Thumbnails",
                 "name": "slickity_thumbnail",
                 "type": "true_false",
                 "instructions": "Displays a thumbnail slideshow directly below the main slideshow.",
@@ -241,6 +482,33 @@
                 },
                 "layout": "block",
                 "sub_fields": [
+                    {
+                        "key": "field_5a29aac9dddfa",
+                        "label": "Template",
+                        "name": "template",
+                        "type": "select",
+                        "instructions": "Select the template for this slide container below, includes styling for the arrows and dots.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "0": "No Template",
+                            "default": "Default Template"
+                        },
+                        "default_value": [
+                            0
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 1,
+                        "ajax": 0,
+                        "return_format": "value",
+                        "placeholder": ""
+                    },
                     {
                         "key": "field_5a2815486913b",
                         "label": "CSS Class",
@@ -391,6 +659,11 @@
                                     "field": "field_5a26b1e6da873",
                                     "operator": "==",
                                     "value": "1"
+                                },
+                                {
+                                    "field": "field_5a29aac9dddfa",
+                                    "operator": "==",
+                                    "value": "0"
                                 }
                             ]
                         ],
@@ -418,6 +691,11 @@
                                     "field": "field_5a26b1e6da873",
                                     "operator": "==",
                                     "value": "1"
+                                },
+                                {
+                                    "field": "field_5a29aac9dddfa",
+                                    "operator": "==",
+                                    "value": "0"
                                 }
                             ]
                         ],
@@ -453,10 +731,10 @@
                     },
                     {
                         "key": "field_5a26cf4ee4cc8",
-                        "label": "Responsive",
+                        "label": "Responsive Settings",
                         "name": "responsive",
                         "type": "true_false",
-                        "instructions": "Enables responsive settings for different breakpoints.",
+                        "instructions": "Define settings for individual breakpoints.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
@@ -475,7 +753,7 @@
                         "label": "Mobile First",
                         "name": "mobileFirst",
                         "type": "true_false",
-                        "instructions": "Applies the main settings to mobile first.",
+                        "instructions": "Enable to apply main settings to mobile first.",
                         "required": 0,
                         "conditional_logic": [
                             [
@@ -799,6 +1077,33 @@
                 "layout": "block",
                 "sub_fields": [
                     {
+                        "key": "field_5a29aed567c68",
+                        "label": "Template",
+                        "name": "template",
+                        "type": "select",
+                        "instructions": "Select the template for this thumbnail slide container below, includes styling for the arrows and dots.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "0": "No Template",
+                            "default": "Default Template"
+                        },
+                        "default_value": [
+                            0
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 1,
+                        "ajax": 0,
+                        "return_format": "value",
+                        "placeholder": ""
+                    },
+                    {
                         "key": "field_5a2815e6601be",
                         "label": "CSS Class",
                         "name": "css",
@@ -910,6 +1215,11 @@
                                     "field": "field_5a26cb3745aab",
                                     "operator": "==",
                                     "value": "1"
+                                },
+                                {
+                                    "field": "field_5a29aed567c68",
+                                    "operator": "==",
+                                    "value": "0"
                                 }
                             ]
                         ],
@@ -937,6 +1247,11 @@
                                     "field": "field_5a26cb3745aab",
                                     "operator": "==",
                                     "value": "1"
+                                },
+                                {
+                                    "field": "field_5a29aed567c68",
+                                    "operator": "==",
+                                    "value": "0"
                                 }
                             ]
                         ],
@@ -972,10 +1287,10 @@
                     },
                     {
                         "key": "field_5a26cea27fc2b",
-                        "label": "Responsive",
+                        "label": "Responsive Settings",
                         "name": "responsive",
                         "type": "true_false",
-                        "instructions": "Enables responsive settings for different breakpoints.",
+                        "instructions": "Define settings for individual breakpoints.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {

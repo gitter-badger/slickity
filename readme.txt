@@ -3,7 +3,7 @@ Contributors: bmarshall511
 Tags: slick, slickjs, slick-slider, slick-plugin, slider, slider-plugin, sliders, slideshow, slideshows, slideshow-gallery, slideshow-maker, carousel, carousel-plugin
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 
 Slickity is the last WordPress carousel plugin you'll ever need! Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features.
@@ -40,8 +40,9 @@ You can disable the core Advanced Custom Fields configuration by adding `define(
 
 == Changelog ==
 
-= TBD =
+= 2.1.0 (December 7, 2017) =
 * Added readme file for translations
+* Added slide templates
 
 = 2.0.1 (December 7, 2017) =
 * Added `load_plugin_textdomain()` for localization
