@@ -31,6 +31,11 @@ Use <code>[slickity id="1"]</code> to display slideshows in posts, pages and wid
 1. Upload the `slickity` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
+== Frequently Asked Questions ==
+
+= I wanna contribute, but can't get my Advanced Custom Fields to take. =
+You can disable the core Advanced Custom Fields configuration by adding `define( 'SLICKITY_DEV', true );` in your `wp-config.php` file. Then you'll need to import the config into your database by using the .json file in the plugin's includes folder.
+
 == Changelog ==
 
 = 2.0.0 (December 6, 2017) =

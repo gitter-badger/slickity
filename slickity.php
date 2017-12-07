@@ -108,9 +108,11 @@ register_deactivation_hook( __FILE__, 'slickity_deactivation' );
 require_once dirname( __FILE__ ) . '/includes/class-tgm-plugin-activation.php';
 
 /**
- * Include the TGM_Plugin_Activation class.
+ * Include the config for Advanced Custom Fields.
  */
-require_once dirname( __FILE__ ) . '/includes/acf.php';
+if ( !defined( 'SLICKITY_DEV' ) || ( defined( 'SLICKITY_DEV' ) && !SLICKITY_DEV ) ) {
+  require_once dirname( __FILE__ ) . '/includes/acf.php';
+}
 
 /**
  * Register the required plugins for this theme.
@@ -246,7 +248,12 @@ if ( !function_exists( 'slickity_shortcode_init' ) ) {
                       asNavFor: '#slickity-thumbnail-<?php the_ID(); ?>',
                     <?php endif; ?>
 
-                    <?php if ( isset( $settings['responsive'] ) && isset( $settings['responsive_options'] ) ): ?>
+                    <?php if (
+                      isset( $settings['responsive'] ) &&
+                      isset( $settings['responsive_options'] ) &&
+                      is_array( $settings['responsive_options'] ) &&
+                      count( $settings['responsive_options'] )
+                    ): ?>
                     responsive: [
                       <?php foreach( $settings['responsive_options'] as $key => $ary ): ?>
                       {
