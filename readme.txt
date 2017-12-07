@@ -40,6 +40,9 @@ You can disable the core Advanced Custom Fields configuration by adding `define(
 
 == Changelog ==
 
+= TBD =
+* Added readme file for translations
+
 = 2.0.1 (December 7, 2017) =
 * Added `load_plugin_textdomain()` for localization
 
