@@ -26,6 +26,8 @@ Major features in Slickity include:
 
 Use <code>[slickity id="1"]</code> to display slideshows in posts, pages and widgets; <code>id</code> being the ID of the slideshow.
 
+**Languages:** English
+
 == Installation ==
 
 1. Upload the `slickity` folder to the `/wp-content/plugins/` directory
