@@ -514,7 +514,7 @@ acf_add_local_field_group(array(
           'name' => 'responsive_options',
           'type' => 'repeater',
           'instructions' => 'Click \'Add Breakpoint\' to define settings for individual breakpoints, then click \'Add Setting\' to add additional settings. For information on the available settings, see <a href="http://kenwheeler.github.io/slick/#settings" target="_blank">http://kenwheeler.github.io/slick/#settings</a>.',
-          'required' => 0,
+          'required' => 1,
           'conditional_logic' => array(
             array(
               array(
@@ -541,7 +541,7 @@ acf_add_local_field_group(array(
               'name' => 'breakpoint',
               'type' => 'number',
               'instructions' => '',
-              'required' => 0,
+              'required' => 1,
               'conditional_logic' => 0,
               'wrapper' => array(
                 'width' => '15',
@@ -562,7 +562,7 @@ acf_add_local_field_group(array(
               'name' => 'settings',
               'type' => 'repeater',
               'instructions' => '',
-              'required' => 0,
+              'required' => 1,
               'conditional_logic' => 0,
               'wrapper' => array(
                 'width' => '85',
@@ -581,7 +581,7 @@ acf_add_local_field_group(array(
                   'name' => 'setting',
                   'type' => 'select',
                   'instructions' => '',
-                  'required' => 0,
+                  'required' => 1,
                   'conditional_logic' => 0,
                   'wrapper' => array(
                     'width' => '50',
@@ -652,7 +652,7 @@ acf_add_local_field_group(array(
                   'name' => 'value',
                   'type' => 'textarea',
                   'instructions' => '',
-                  'required' => 0,
+                  'required' => 1,
                   'conditional_logic' => 0,
                   'wrapper' => array(
                     'width' => '50',
@@ -1035,7 +1035,7 @@ acf_add_local_field_group(array(
           'name' => 'responsive_options',
           'type' => 'repeater',
           'instructions' => 'Click \'Add Breakpoint\' to define settings for individual breakpoints, then click \'Add Setting\' to add additional settings. For information on the available settings, see <a href="http://kenwheeler.github.io/slick/#settings" target="_blank">http://kenwheeler.github.io/slick/#settings</a>.',
-          'required' => 0,
+          'required' => 1,
           'conditional_logic' => array(
             array(
               array(
@@ -1062,7 +1062,7 @@ acf_add_local_field_group(array(
               'name' => 'breakpoint',
               'type' => 'number',
               'instructions' => '',
-              'required' => 0,
+              'required' => 1,
               'conditional_logic' => 0,
               'wrapper' => array(
                 'width' => '15',
@@ -1083,7 +1083,7 @@ acf_add_local_field_group(array(
               'name' => 'settings',
               'type' => 'repeater',
               'instructions' => '',
-              'required' => 0,
+              'required' => 1,
               'conditional_logic' => 0,
               'wrapper' => array(
                 'width' => '85',
@@ -1102,7 +1102,7 @@ acf_add_local_field_group(array(
                   'name' => 'setting',
                   'type' => 'select',
                   'instructions' => '',
-                  'required' => 0,
+                  'required' => 1,
                   'conditional_logic' => 0,
                   'wrapper' => array(
                     'width' => '50',
@@ -1173,7 +1173,7 @@ acf_add_local_field_group(array(
                   'name' => 'value',
                   'type' => 'textarea',
                   'instructions' => '',
-                  'required' => 0,
+                  'required' => 1,
                   'conditional_logic' => 0,
                   'wrapper' => array(
                     'width' => '50',

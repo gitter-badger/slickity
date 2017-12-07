@@ -503,7 +503,7 @@
                         "name": "responsive_options",
                         "type": "repeater",
                         "instructions": "Click 'Add Breakpoint' to define settings for individual breakpoints, then click 'Add Setting' to add additional settings. For information on the available settings, see <a href=\"http:\/\/kenwheeler.github.io\/slick\/#settings\" target=\"_blank\">http:\/\/kenwheeler.github.io\/slick\/#settings<\/a>.",
-                        "required": 0,
+                        "required": 1,
                         "conditional_logic": [
                             [
                                 {
@@ -530,7 +530,7 @@
                                 "name": "breakpoint",
                                 "type": "number",
                                 "instructions": "",
-                                "required": 0,
+                                "required": 1,
                                 "conditional_logic": 0,
                                 "wrapper": {
                                     "width": "15",
@@ -551,7 +551,7 @@
                                 "name": "settings",
                                 "type": "repeater",
                                 "instructions": "",
-                                "required": 0,
+                                "required": 1,
                                 "conditional_logic": 0,
                                 "wrapper": {
                                     "width": "85",
@@ -570,7 +570,7 @@
                                         "name": "setting",
                                         "type": "select",
                                         "instructions": "",
-                                        "required": 0,
+                                        "required": 1,
                                         "conditional_logic": 0,
                                         "wrapper": {
                                             "width": "50",
@@ -640,7 +640,7 @@
                                         "name": "value",
                                         "type": "textarea",
                                         "instructions": "",
-                                        "required": 0,
+                                        "required": 1,
                                         "conditional_logic": 0,
                                         "wrapper": {
                                             "width": "50",
@@ -1022,7 +1022,7 @@
                         "name": "responsive_options",
                         "type": "repeater",
                         "instructions": "Click 'Add Breakpoint' to define settings for individual breakpoints, then click 'Add Setting' to add additional settings. For information on the available settings, see <a href=\"http:\/\/kenwheeler.github.io\/slick\/#settings\" target=\"_blank\">http:\/\/kenwheeler.github.io\/slick\/#settings<\/a>.",
-                        "required": 0,
+                        "required": 1,
                         "conditional_logic": [
                             [
                                 {
@@ -1049,7 +1049,7 @@
                                 "name": "breakpoint",
                                 "type": "number",
                                 "instructions": "",
-                                "required": 0,
+                                "required": 1,
                                 "conditional_logic": 0,
                                 "wrapper": {
                                     "width": "15",
@@ -1070,7 +1070,7 @@
                                 "name": "settings",
                                 "type": "repeater",
                                 "instructions": "",
-                                "required": 0,
+                                "required": 1,
                                 "conditional_logic": 0,
                                 "wrapper": {
                                     "width": "85",
@@ -1089,7 +1089,7 @@
                                         "name": "setting",
                                         "type": "select",
                                         "instructions": "",
-                                        "required": 0,
+                                        "required": 1,
                                         "conditional_logic": 0,
                                         "wrapper": {
                                             "width": "50",
@@ -1159,7 +1159,7 @@
                                         "name": "value",
                                         "type": "textarea",
                                         "instructions": "",
-                                        "required": 0,
+                                        "required": 1,
                                         "conditional_logic": 0,
                                         "wrapper": {
                                             "width": "50",
