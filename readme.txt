@@ -1,12 +1,12 @@
 === Slickity ===
 Contributors: bmarshall511
-Tags: slick, slider, carousel
-Requires at least: 3.7
-Tested up to: 4.6.1
-Stable tag: 1.0.3
+Tags: slick, slickjs, slick-slider, slick-plugin, slider, slider-plugin, sliders, slideshow, slideshows, slideshow-gallery, slideshow-maker, carousel, carousel-plugin
+Requires at least: 4.7
+Tested up to: 4.9.1
+Stable tag: 2.0.0
 License: GPLv2 or later
 
-Slickity is the last WordPress carousel plugin you'll ever need. Easily add carousels & sliders to your theme using slick.js.
+Slickity is the last WordPress carousel plugin you'll ever need! Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features.
 
 == Description ==
 
@@ -15,44 +15,30 @@ Slickity is **the last WordPress carousel plugin you'll ever need**. Easily add 
 Major features in Slickity include:
 
 * Uses Key Wheeler's hugely popular [slick](http://kenwheeler.github.io/slick/) library
-* Create multiple slideshows
-* Configure settings per slideshow
-* Pre-defined themes included
-* Set individual slide schedules, automation
-* Fully responsive, scales with its container
+* Fully responsive &mdash; scales with its container
 * Separate settings per breakpoint
 * Uses CSS3 when available, fully functional when not
-* Swipe enabled, or disabled, if you prefer
+* Swipe enabled &mdash; or disabled, if you prefer
 * Desktop mouse dragging
 * Infinite looping
 * Fully accessible with arrow key navigation
-* Add, remove, filter &amp; unfilter slides
-* Autoplay, dots, arrows, etc&hellip;
+* Autoplay, dots, arrows, callbacks, etc...
 
-Use <code>[slickity-slideshow id="1"]</code> to display slideshows in posts, pages and widgets; <code>id</code> being the ID of the slideshow.
+Use <code>[slickity id="1"]</code> to display slideshows in posts, pages and widgets; <code>id</code> being the ID of the slideshow.
+
+**Languages:** English
 
 == Installation ==
 
-Upload the Slickity plugin to your blog, Activate it.
+1. Upload the `slickity` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
-You're done!
+== Frequently Asked Questions ==
+
+= I wanna contribute, but can't get my Advanced Custom Fields to take. =
+You can disable the core Advanced Custom Fields configuration by adding `define( 'SLICKITY_DEV', true );` in your `wp-config.php` file. Then you'll need to import the config into your database by using the .json file in the plugin's includes folder.
 
 == Changelog ==
 
-= 1.0.3 =
-
-* Update documentation
-
-= 1.0.2 =
-
-* Added additional slide style
-
-= 1.0.1 =
-*Release Date - 29 September 2016*
-
-* Minor updates
-
-= 1.0.0 =
-*Release Date - 26 September 2016*
-
-* Initial commit.
+= 2.0.0 (December 6, 2017) =
+* A complete rewrite with more options!
