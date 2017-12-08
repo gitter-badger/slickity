@@ -41,6 +41,9 @@ You can disable the core Advanced Custom Fields configuration by adding `define(
 
 == Changelog ==
 
+= TBD =
+* Removed debugging code
+
 = 2.2.0 (December 8, 2017) =
 * Added lightbox option
 

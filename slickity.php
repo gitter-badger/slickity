@@ -277,8 +277,8 @@ if ( !function_exists( 'slickity_slide_content' ) ) {
         // Main slide
 
         // No custom thumbnail, no template
-        $html = '<div class="slickity-slide slickity-slide--thumbnail ' . $slide['css'] . '" id="slickity-slide-' . $id . '">$';
-        $html .= apply_filters( 'the_content', $slide['slide_content'] ) . 'HERE';
+        $html = '<div class="slickity-slide slickity-slide--thumbnail ' . $slide['css'] . '" id="slickity-slide-' . $id . '">';
+        $html .= apply_filters( 'the_content', $slide['slide_content'] );
         $html .= '</div>';
       } else {
         // Thumbnail slide
