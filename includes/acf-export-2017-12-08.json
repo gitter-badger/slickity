@@ -239,7 +239,7 @@
                                         "label": "Text Color",
                                         "name": "text_color",
                                         "type": "color_picker",
-                                        "instructions": "Select the caption text color.",
+                                        "instructions": "Caption text color.",
                                         "required": 0,
                                         "conditional_logic": 0,
                                         "wrapper": {
@@ -254,7 +254,7 @@
                                         "label": "Background Color",
                                         "name": "bg_color",
                                         "type": "color_picker",
-                                        "instructions": "Select the background color for the caption text.",
+                                        "instructions": "Background color for the caption text.",
                                         "required": 0,
                                         "conditional_logic": 0,
                                         "wrapper": {
@@ -269,7 +269,7 @@
                                         "label": "Background Opacity",
                                         "name": "bg_opacity",
                                         "type": "number",
-                                        "instructions": "Enter the opacity for the background color.",
+                                        "instructions": "Opacity for the background color.",
                                         "required": 0,
                                         "conditional_logic": 0,
                                         "wrapper": {
@@ -468,6 +468,25 @@
                 "ui_off_text": "False"
             },
             {
+                "key": "field_5a2a995f2770d",
+                "label": "Enable Lightbox",
+                "name": "slickity_lightbox",
+                "type": "true_false",
+                "instructions": "Displays a lightbox gallery when the user clicks on a slide.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "True",
+                "ui_off_text": "False"
+            },
+            {
                 "key": "field_5a26ae7d3606d",
                 "label": "Main Slideshow Settings",
                 "name": "slickity_main_settings",
@@ -651,7 +670,7 @@
                         "label": "Previous Arrow",
                         "name": "prevArrow",
                         "type": "text",
-                        "instructions": "Allows you to select a node or customize the HTML for the \"Previous\" arrow. Accepts HTML.",
+                        "instructions": "Allows you to customize the HTML for the \"Previous\" arrow. Accepts HTML.",
                         "required": 0,
                         "conditional_logic": [
                             [
@@ -683,7 +702,7 @@
                         "label": "Next Arrow",
                         "name": "nextArrow",
                         "type": "text",
-                        "instructions": "Allows you to select a node or customize the HTML for the \"Next\" arrow. Accepts HTML.",
+                        "instructions": "Allows you to customize the HTML for the \"Next\" arrow. Accepts HTML.",
                         "required": 0,
                         "conditional_logic": [
                             [
@@ -1081,7 +1100,7 @@
                         "label": "Template",
                         "name": "template",
                         "type": "select",
-                        "instructions": "Select the template for this thumbnail slide container below, includes styling for the arrows and dots.",
+                        "instructions": "Select the template for the thumbnail slide container below, includes styling for the arrows and dots.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
@@ -1144,27 +1163,6 @@
                         "step": 1
                     },
                     {
-                        "key": "field_5a26cad045aa9",
-                        "label": "Slides to Scroll",
-                        "name": "slidesToScroll",
-                        "type": "number",
-                        "instructions": "Number of slides to scroll.",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "25",
-                            "class": "",
-                            "id": ""
-                        },
-                        "default_value": 1,
-                        "placeholder": "",
-                        "prepend": "",
-                        "append": "",
-                        "min": 1,
-                        "max": "",
-                        "step": 1
-                    },
-                    {
                         "key": "field_5a26caf345aaa",
                         "label": "Adaptive Height",
                         "name": "adaptiveHeight",
@@ -1207,7 +1205,7 @@
                         "label": "Previous Arrow",
                         "name": "prevArrow",
                         "type": "text",
-                        "instructions": "Allows you to select a node or customize the HTML for the \"Previous\" arrow. Accepts HTML.",
+                        "instructions": "Allows you to customize the HTML for the \"Previous\" arrow. Accepts HTML.",
                         "required": 0,
                         "conditional_logic": [
                             [
@@ -1239,7 +1237,7 @@
                         "label": "Next Arrow",
                         "name": "nextArrow",
                         "type": "text",
-                        "instructions": "Allows you to select a node or customize the HTML for the \"Next\" arrow. Accepts HTML.",
+                        "instructions": "Allows you to customize the HTML for the \"Next\" arrow. Accepts HTML.",
                         "required": 0,
                         "conditional_logic": [
                             [
@@ -1573,6 +1571,563 @@
                             },
                             {
                                 "key": "field_5a26cc3e45ab1",
+                                "label": "Value",
+                                "name": "value",
+                                "type": "textarea",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "maxlength": "",
+                                "rows": "",
+                                "new_lines": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_5a2aa1e4b7b4b",
+                "label": "Lightbox Options",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5a2a995f2770d",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5a2aa20ab7b4c",
+                "label": "Lightbox Slideshow Settings",
+                "name": "slickity_lightbox_settings",
+                "type": "group",
+                "instructions": "For more information on the available settings, see <a href=\"http:\/\/kenwheeler.github.io\/slick\/#settings\" target=\"_blank\">http:\/\/kenwheeler.github.io\/slick\/#settings<\/a>.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5a2aa2f1f265d",
+                        "label": "Template",
+                        "name": "template",
+                        "type": "select",
+                        "instructions": "Select the template for the lightbox slide container below, includes styling for the arrows and dots.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "0": "No Template",
+                            "default": "Default Template"
+                        },
+                        "default_value": [
+                            0
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 1,
+                        "ajax": 0,
+                        "return_format": "value",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5a2aa331f265e",
+                        "label": "CSS Class",
+                        "name": "css",
+                        "type": "text",
+                        "instructions": "You can easily style the lightbox slideshow by adding a CSS class below. Separate multiple classes with a space.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5a2aa352f265f",
+                        "label": "Slides to Show",
+                        "name": "slidesToShow",
+                        "type": "number",
+                        "instructions": "Number of slides to show.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": 1,
+                        "max": "",
+                        "step": 1
+                    },
+                    {
+                        "key": "field_5a2aa376f2660",
+                        "label": "Slides to Scroll",
+                        "name": "slidesToScroll",
+                        "type": "number",
+                        "instructions": "Number of slides to scroll.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 1,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": 1,
+                        "max": "",
+                        "step": 1
+                    },
+                    {
+                        "key": "field_5a2aa394f2661",
+                        "label": "Adaptive Height",
+                        "name": "adaptiveHeight",
+                        "type": "true_false",
+                        "instructions": "Enables adaptive height for single slide horizontal carousels.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a2aa3b3f2662",
+                        "label": "Arrows",
+                        "name": "arrows",
+                        "type": "true_false",
+                        "instructions": "Enable prev\/next arrows.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 1,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a2aa3cef2663",
+                        "label": "Previous Arrow",
+                        "name": "prevArrow",
+                        "type": "text",
+                        "instructions": "Allows you to select a node or customize the HTML for the \"Previous\" arrow. Accepts HTML.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2aa3b3f2662",
+                                    "operator": "==",
+                                    "value": "1"
+                                },
+                                {
+                                    "field": "field_5a2aa2f1f265d",
+                                    "operator": "==",
+                                    "value": "0"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "<button type=\"button\" class=\"slick-prev\">Previous<\/button>",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5a2aa3f0f2665",
+                        "label": "Next Arrow",
+                        "name": "nextArrow",
+                        "type": "text",
+                        "instructions": "Allows you to customize the HTML for the \"Next\" arrow. Accepts HTML.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2aa3b3f2662",
+                                    "operator": "==",
+                                    "value": "1"
+                                },
+                                {
+                                    "field": "field_5a2aa2f1f265d",
+                                    "operator": "==",
+                                    "value": "0"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "<button type=\"button\" class=\"slick-next\">Next<\/button>",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5a2aa45cf2667",
+                        "label": "Dots",
+                        "name": "dots",
+                        "type": "true_false",
+                        "instructions": "Enable dot indicators.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a2aa477f2668",
+                        "label": "Responsive Settings",
+                        "name": "responsive",
+                        "type": "true_false",
+                        "instructions": "Define settings for individual breakpoints.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a2aa497f2669",
+                        "label": "Mobile First",
+                        "name": "mobileFirst",
+                        "type": "true_false",
+                        "instructions": "Applies the main settings to mobile first.",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2aa477f2668",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "25",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 1,
+                        "ui_on_text": "True",
+                        "ui_off_text": "False"
+                    },
+                    {
+                        "key": "field_5a2aa4bbf266a",
+                        "label": "Responsive Options",
+                        "name": "responsive_options",
+                        "type": "repeater",
+                        "instructions": "Click 'Add Breakpoint' to define settings for individual breakpoints, then click 'Add Setting' to add additional settings. For information on the available settings, see <a href=\"http:\/\/kenwheeler.github.io\/slick\/#settings\" target=\"_blank\">http:\/\/kenwheeler.github.io\/slick\/#settings<\/a>.",
+                        "required": 1,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5a2aa477f2668",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "",
+                        "sub_fields": [
+                            {
+                                "key": "field_5a2aa4cbf266b",
+                                "label": "Breakpoint",
+                                "name": "breakpoint",
+                                "type": "number",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "15",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 728,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "px",
+                                "min": 1,
+                                "max": "",
+                                "step": 1
+                            },
+                            {
+                                "key": "field_5a2aa4eff266c",
+                                "label": "Settings",
+                                "name": "settings",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "85",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "collapsed": "",
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "Add Setting",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_5a2aa503f266d",
+                                        "label": "Setting",
+                                        "name": "setting",
+                                        "type": "select",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "50",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "choices": {
+                                            "accessibility": "accessibility",
+                                            "adaptiveHeight": "adaptiveHeight",
+                                            "autoplay": "autoplay",
+                                            "autoplaySpeed": "autoplaySpeed",
+                                            "arrows": "arrows",
+                                            "asNavFor": "asNavFor",
+                                            "appendArrows": "appendArrows",
+                                            "appendDots": "appendDots",
+                                            "prevArrow": "prevArrow",
+                                            "nextArrow": "nextArrow",
+                                            "centerMode": "centerMode",
+                                            "centerPadding": "centerPadding",
+                                            "cssEase": "cssEase",
+                                            "customPaging": "customPaging",
+                                            "dots": "dots",
+                                            "dotsClass": "dotsClass",
+                                            "draggable": "draggable",
+                                            "fade": "fade",
+                                            "focusOnSelect": "focusOnSelect",
+                                            "easing": "easing",
+                                            "edgeFriction": "edgeFriction",
+                                            "infinite": "infinite",
+                                            "initialSlide": "initialSlide",
+                                            "lazyLoad": "lazyLoad",
+                                            "mobileFirst": "mobileFirst",
+                                            "pauseOnFocus": "pauseOnFocus",
+                                            "pauseOnHover": "pauseOnHover",
+                                            "pauseOnDotsHover": "pauseOnDotsHover",
+                                            "respondTo": "respondTo",
+                                            "rows": "rows",
+                                            "slide": "slide",
+                                            "slidesPerRow": "slidesPerRow",
+                                            "slidesToShow": "slidesToShow",
+                                            "slidesToScroll": "slidesToScroll",
+                                            "speed": "speed",
+                                            "swipe": "swipe",
+                                            "swipeToSlide": "swipeToSlide",
+                                            "touchMove": "touchMove",
+                                            "touchThreshold": "touchThreshold",
+                                            "useCSS": "useCSS",
+                                            "useTransform": "useTransform",
+                                            "variableWidth": "variableWidth",
+                                            "vertical": "vertical",
+                                            "verticalSwiping": "verticalSwiping",
+                                            "rtl": "rtl",
+                                            "waitForAnimate": "waitForAnimate",
+                                            "zIndex": "zIndex"
+                                        },
+                                        "default_value": [],
+                                        "allow_null": 0,
+                                        "multiple": 0,
+                                        "ui": 1,
+                                        "ajax": 0,
+                                        "return_format": "value",
+                                        "placeholder": ""
+                                    },
+                                    {
+                                        "key": "field_5a2aa52df266e",
+                                        "label": "Value",
+                                        "name": "value",
+                                        "type": "textarea",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "50",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": "",
+                                        "new_lines": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_5a2aa562f266f",
+                        "label": "Additional Settings",
+                        "name": "additional_settings",
+                        "type": "repeater",
+                        "instructions": "Click 'Add Setting' to add additional settings. For information on the available settings, see <a href=\"http:\/\/kenwheeler.github.io\/slick\/#settings\" target=\"_blank\">http:\/\/kenwheeler.github.io\/slick\/#settings<\/a>.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "Add Setting",
+                        "sub_fields": [
+                            {
+                                "key": "field_5a2aa578f2670",
+                                "label": "Setting",
+                                "name": "setting",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "accessibility": "accessibility",
+                                    "autoplaySpeed": "autoplaySpeed",
+                                    "asNavFor": "asNavFor",
+                                    "appendArrows": "appendArrows",
+                                    "appendDots": "appendDots",
+                                    "centerMode": "centerMode",
+                                    "centerPadding": "centerPadding",
+                                    "cssEase": "cssEase",
+                                    "customPaging": "customPaging",
+                                    "dotsClass": "dotsClass",
+                                    "draggable": "draggable",
+                                    "fade": "fade",
+                                    "focusOnSelect": "focusOnSelect",
+                                    "easing": "easing",
+                                    "edgeFriction": "edgeFriction",
+                                    "initialSlide": "initialSlide",
+                                    "lazyLoad": "lazyLoad",
+                                    "mobileFirst": "mobileFirst",
+                                    "pauseOnFocus": "pauseOnFocus",
+                                    "pauseOnHover": "pauseOnHover",
+                                    "pauseOnDotsHover": "pauseOnDotsHover",
+                                    "respondTo": "respondTo",
+                                    "rows": "rows",
+                                    "slide": "slide",
+                                    "slidesPerRow": "slidesPerRow",
+                                    "speed": "speed",
+                                    "swipe": "swipe",
+                                    "swipeToSlide": "swipeToSlide",
+                                    "touchMove": "touchMove",
+                                    "touchThreshold": "touchThreshold",
+                                    "useCSS": "useCSS",
+                                    "useTransform": "useTransform",
+                                    "variableWidth": "variableWidth",
+                                    "vertical": "vertical",
+                                    "verticalSwiping": "verticalSwiping",
+                                    "rtl": "rtl",
+                                    "waitForAnimate": "waitForAnimate",
+                                    "zIndex": "zIndex"
+                                },
+                                "default_value": [],
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 1,
+                                "ajax": 0,
+                                "return_format": "value",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5a2aa599f2671",
                                 "label": "Value",
                                 "name": "value",
                                 "type": "textarea",

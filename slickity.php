@@ -4,7 +4,7 @@
 Plugin Name: Slickity
 Plugin URI: https://wordpress.org/plugins/slickity/
 Description: Slickity is <strong>the last WordPress carousel plugin you'll ever need!</strong> Easily add fully customizable carousels and sliders to your theme using a simple shortcode. Fully responsive and loaded with a ton of customizable features. Uses Key Wheeler's hugely popular <a href="http://kenwheeler.github.io/slick/">slick</a> library.
-Version: 2.1.0
+Version: 2.2.0
 Author: Ben Marshall
 Author URI: https://benmarshall.me
 License: GPLv2 or later
@@ -181,15 +181,18 @@ if ( !function_exists( 'slickity_scripts' ) ) {
 
     // Register Slick JS
     wp_register_script( 'slickity-slick', plugin_dir_url( __FILE__ ) . 'public/js/slick.min.js', array( 'jquery' ), '1.8.0', true );
+    wp_register_script( 'slickity', plugin_dir_url( __FILE__ ) . 'public/js/slickity.js', array( 'jquery', 'slickity-slick' ), '2.2.0', true );
 
     // Register Slick CSS
     wp_register_style( 'slickity-slick', plugin_dir_url( __FILE__ ) . 'public/css/slick.css', array(), '1.8.0' );
     wp_register_style( 'slickity-theme', plugin_dir_url( __FILE__ ) . 'public/css/slick-theme.css', array( 'slickity-slick' ), '1.8.0' );
     wp_register_style( 'slickity-templates', plugin_dir_url( __FILE__ ) . 'public/css/slick-templates.css', array( 'slickity-theme' ) );
+    wp_register_style( 'slickity-lightbox', plugin_dir_url( __FILE__ ) . 'public/css/slick-lightbox.css' );
 
     // @TODO - Find a better way to load scripts only if a slideshow is present on the page.
-    wp_enqueue_script( 'slickity-slick' );
+    wp_enqueue_script( 'slickity' );
     wp_enqueue_style( 'slickity-templates' );
+    wp_enqueue_style( 'slickity-lightbox' );
   }
 }
 add_action( 'wp_enqueue_scripts', 'slickity_scripts' );
@@ -323,25 +326,26 @@ if ( !function_exists( 'slickity_shortcode_init' ) ) {
               // Get slideshow settings
               $settings = get_field( 'slickity_main_settings' );
 
+              // Setup slideshow classes
+              $slideshow_css = 'slickity ';
+
               // Check if template was selected
-              $template_css = '';
-              if ( $settings['template'] ) {
-                $template_css = 'slickity-template slickity-template--' . $settings['template'];
+              if ( isset( $settings['template'] ) && $settings['template'] ) {
+                $slideshow_css .= 'slickity-template slickity-template--' . $settings['template'] . ' ';
               }
 
-              // Get thumbnail settings
-              $thumbnail_settings = false;
-              if ( get_field( 'slickity_thumbnail' ) ) {
-                $thumbnail_settings = get_field( 'slickity_thumbnail_settings' );
+              // Check if lightbox is enabled
+              $lightbox = get_field( 'slickity_lightbox' );
+              if ( $lightbox ) {
+                $slideshow_css .= 'slickity-lightbox ';
+              }
 
-                // Check if thumbnail template was selected
-                $thumbnail_template_css = '';
-                if ( $thumbnail_settings['template'] ) {
-                  $thumbnail_template_css = 'slickity-thumbnail-template slickity-thumbnail-template--' . $thumbnail_settings['template'];
-                }
+              // Check if custom CSS class has been set
+              if ( isset( $settings['css'] ) && $settings['css'] ) {
+                $slideshow_css .= $settings['css'];
               }
               ?>
-              <div class="slickity <?php echo $template_css; ?> <?php echo $settings['css']; ?>" id="slickity-<?php the_ID(); ?>">
+              <div class="<?php echo $slideshow_css; ?>" id="slickity-<?php the_ID(); ?>">
                 <?php
                 foreach( $slides as $key => $slide ):
                   echo slickity_slide_content( $slide, $key );
@@ -349,20 +353,71 @@ if ( !function_exists( 'slickity_shortcode_init' ) ) {
                 ?>
               </div>
 
-              <?php if ( $thumbnail_settings ): ?>
-                <div class="slickity slickity--thumbnail <?php echo $thumbnail_template_css; ?> <?php echo $thumbnail_settings['css']; ?>" id="slickity-thumbnail-<?php the_ID(); ?>">
+              <?php
+              // Check if thumbnail slideshow has been enabled
+              if ( get_field( 'slickity_thumbnail' ) ) {
+
+                // Get thumbnail slideshow settings
+                $thumbnail_settings = get_field( 'slickity_thumbnail_settings' );
+
+                // Setup thumbnail slideshow classes
+                $thumbnail_slideshow_css = 'slickity slickity--thumbnail ';
+
+                // Check if thumbnail template was selected
+                if ( $thumbnail_settings['template'] ) {
+                  $thumbnail_slideshow_css .= 'slickity-thumbnail-template slickity-thumbnail-template--' . $thumbnail_settings['template'] . ' ';
+                }
+
+                // Check if custom CSS class has been set
+                if ( isset( $thumbnail_settings['css'] ) && $thumbnail_settings['css'] ) {
+                  $thumbnail_slideshow_css .= $thumbnail_settings['css'];
+                }
+                ?>
+                <div class="<?php echo $thumbnail_slideshow_css; ?>" id="slickity-thumbnail-<?php the_ID(); ?>">
                   <?php
                   foreach( $slides as $key => $slide ):
                     echo slickity_slide_content( $slide, $key, true );
                   endforeach;
                   ?>
                 </div>
+              <?php } ?>
+
+              <?php
+              // Check if lightbox is enabled
+              if ( $lightbox ):
+
+                // Get lightbox slideshow settings
+                $lightbox_settings = get_field( 'slickity_lightbox_settings' );
+
+                // Setup lightbox slideshow classes
+                $lightbox_slideshow_css = 'slickity slickity--lightbox ';
+
+                // Check if lightbox template was selected
+                if ( $lightbox_settings['template'] ) {
+                  $lightbox_slideshow_css .= 'slickity-lightbox-template slickity-lightbox-template--' . $lightbox_settings['template'] . ' ';
+                }
+
+                // Check if custom CSS class has been set
+                if ( isset( $lightbox_settings['css'] ) && $lightbox_settings['css'] ) {
+                  $lightbox_slideshow_css .= $lightbox_settings['css'];
+                }
+                ?>
+                <div class="slickity-lightbox-gallery" id="slickity-lightbox-gallery-<?php the_ID(); ?>">
+                  <div class="<?php echo $lightbox_slideshow_css; ?>" id="slickity-lightbox-<?php the_ID(); ?>">
+                    <?php
+                    foreach( $slides as $key => $slide ):
+                      echo slickity_slide_content( $slide, $key );
+                    endforeach;
+                    ?>
+                  </div>
+                </div>
               <?php endif; ?>
+
               <script>
                 jQuery(function( $ ) {
                   $( '#slickity-<?php the_ID(); ?>' ).slick({
                     <?php if ( $thumbnail_settings ): ?>
-                      asNavFor: '#slickity-thumbnail-<?php the_ID(); ?>',
+                      asNavFor: '#slickity-thumbnail-<?php the_ID(); ?><?php if ( $lightbox ): ?>, #slickity-lightbox-<?php the_ID(); ?><?php endif; ?>',
                     <?php endif; ?>
 
                     <?php if (
@@ -387,8 +442,50 @@ if ( !function_exists( 'slickity_shortcode_init' ) ) {
 
                   <?php if ( $thumbnail_settings ): ?>
                     $( '#slickity-thumbnail-<?php the_ID(); ?>' ).slick({
-                      asNavFor: '#slickity-<?php the_ID(); ?>',
+                      asNavFor: '#slickity-<?php the_ID(); ?><?php if ( $lightbox ): ?>, #slickity-lightbox-<?php the_ID(); ?><?php endif; ?>',
+
+                      <?php if (
+                        isset( $thumbnail_settings['responsive'] ) &&
+                        isset( $thumbnail_settings['responsive_options'] ) &&
+                        is_array( $thumbnail_settings['responsive_options'] ) &&
+                        count( $thumbnail_settings['responsive_options'] )
+                      ): ?>
+                      responsive: [
+                        <?php foreach( $thumbnail_settings['responsive_options'] as $key => $ary ): ?>
+                        {
+                          breakpoint: <?php echo $ary['breakpoint']; ?>,
+                          settings: {
+                            <?php echo slickity_process_js_settings( slickity_process_responsive_js_settings( $ary['settings'] ) ); ?>
+                          }
+                        }
+                        <?php endforeach; ?>
+                      ],
+                      <?php endif; ?>
                       <?php echo slickity_process_js_settings( $thumbnail_settings ); ?>
+                    });
+                  <?php endif; ?>
+
+                  <?php if ( $lightbox ): ?>
+                    $( '#slickity-lightbox-<?php the_ID(); ?>' ).slick({
+                      asNavFor: '#slickity-<?php the_ID(); ?><?php if ( $thumbnail_settings ): ?>, #slickity-thumbnail-<?php the_ID(); ?><?php endif; ?>',
+                      <?php if (
+                        isset( $lightbox_settings['responsive'] ) &&
+                        isset( $lightbox_settings['responsive_options'] ) &&
+                        is_array( $lightbox_settings['responsive_options'] ) &&
+                        count( $lightbox_settings['responsive_options'] )
+                      ): ?>
+                      responsive: [
+                        <?php foreach( $lightbox_settings['responsive_options'] as $key => $ary ): ?>
+                        {
+                          breakpoint: <?php echo $ary['breakpoint']; ?>,
+                          settings: {
+                            <?php echo slickity_process_js_settings( slickity_process_responsive_js_settings( $ary['settings'] ) ); ?>
+                          }
+                        }
+                        <?php endforeach; ?>
+                      ],
+                      <?php endif; ?>
+                      <?php echo slickity_process_js_settings( $lightbox_settings ); ?>
                     });
                   <?php endif; ?>
                 });

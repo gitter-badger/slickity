@@ -1,0 +1,33 @@
+/**
+ * Slickity Lightbox
+ *
+ * Contains styles for the Slickity lightbox.
+ */
+
+.slickity-lightbox-gallery {
+  background: rgba(0, 0, 0, .85);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: all .3s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 9;
+}
+
+.slickity-lightbox-gallery--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slickity-lightbox-gallery .slickity {
+  left: 50%;
+  max-width: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 100%;
+  z-index: 10;
+}

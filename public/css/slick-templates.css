@@ -56,6 +56,35 @@
 
 
 
+/* Lightbox Container - Default Template */
+.slickity-lightbox-template--default {}
+
+.slickity-lightbox-template--default .slick-prev,
+.slickity-lightbox-template--default .slick-next {
+  height: 30px;
+  width: 30px;
+  z-index: 2;
+}
+
+.slickity-lightbox-template--default .slick-prev:before,
+.slickity-lightbox-template--default .slick-next:before {
+  font-size: 30px;
+}
+
+.slickity-lightbox-template--default .slick-prev {
+  left: .5rem;
+}
+
+.slickity-lightbox-template--default .slick-next {
+  right: .5rem;
+}
+
+.slickity-lightbox-template--default .slickity-slide-template--default .slickity-slide-template__caption {
+  bottom: auto;
+  left: auto;
+  position: relative;
+}
+
 /* Slide - Default Template */
 .slickity-slide-template--default {
   position: relative;
